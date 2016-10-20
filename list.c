@@ -19,15 +19,7 @@ int  list_empty(struct node *head)
 	return head->next == NULL;  
 }  
   
-void list_add_tail(struct node *new, struct node *head)  
-{  
-	struct node *p = head;  
-  
-	while (p->next) {  
-		p = p->next;  
-	}  
-	p->next = new;  
-}  
+
   
 void list_del(struct node *head)  
 {  
@@ -57,7 +49,17 @@ void list_create(struct node *head)
   
 		list_add_tail(new, head);  
 	}  
-}  
+}
+
+void list_add_tail(struct node *new, struct node *head)  
+{  
+	struct node *p = head;  
+  
+	while (p->next) {  
+		p = p->next;  //给上一个新创建的new指针 的next赋值为传值进来的new
+	}  
+	p->next = new;  
+}    
   
 void list_dump(struct node *head)  
 {  
