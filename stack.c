@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include <stdlib.h>  
-
+#include "stackli.h"
+#include "fatal.h"
 struct Node;
 typedef struct Node *PtrToNode;
 
@@ -23,10 +24,12 @@ int IsEmpty(Stack S){
 }
 
 void MakeEmpty(Stack S){
-	if(S == NULL)Error("must use createstack first");
-	
-	else 
+	if(S == NULL){ 
+		Error("must use createstack first");
+	}
+	else{ 
 		while(!IsEmpty(S))Pop(S);
+	}
 
 }
 
@@ -35,7 +38,7 @@ Stack CreateStack(void){
 	S = malloc(sizeof(struct Node));
 	if( S == NULL)FatalError("out of space");
 	S->Next == NULL;
-	MakeEmpty(S);
+	//MakeEmpty(S);
 	return S;
 }
 
@@ -60,7 +63,7 @@ ElementType Top(Stack S){
 }
 
 void Pop(Stack S){
-	PtrToNode FirstCell;
+	PtrToNode FirstCell; 
 	
 	if(IsEmpty(S))
 		Error("Empty stack");
@@ -79,8 +82,14 @@ void Pop(Stack S){
 int main(int argc,char *argv[]){
 
 	int a = 100;
-
-	printf("%X-&a\r\n",&a);
+	printf("%d\r\n",a);	
+	Stack test = NULL;
+	//test = malloc(sizeof(struct Node));
+	test = CreateStack();
+	Push(1,test);
+	Push(2,test);
+	//test->Element = 2;
+	printf("%d\r\n",test->Element);
 
 	return 0;
 }
