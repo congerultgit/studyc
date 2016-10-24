@@ -89,7 +89,7 @@ int main(int argc,char *argv[]){
 	Push(1,test);
 	Push(2,test);
 	//test->Element = 2;
-	printf("%d\r\n",test->Element);
-
+	printf("%d\r\n",test->Next->Element);
+	printf("%d\r\n",test->Next->Next->Element);
 	return 0;
 }
