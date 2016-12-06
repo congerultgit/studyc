@@ -19,6 +19,7 @@ int main(int argc,char *argv[]){
 	printf("%X-*bb\r\n",*bb);
 	printf("%X-&bb\r\n",&bb);	
 	printf("%d-**bb\r\n",**bb);	
+	printf("%d-length-bb\r\n",sizeof(bb));	
 	//printf("%Xa\r\n",&a);
 	//printf("%Xaa\r\n",&aa);
 	//printf("%dc\r\n",*c);
