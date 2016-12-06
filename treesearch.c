@@ -1,6 +1,10 @@
 
 #include <stdlib.h>
 #include "fatal.h"
+/*
+Binary Sort Tree 二叉排序树 
+Binary Search Tree  二叉搜索树
+*/
 
 
 typedef int ElementType;
@@ -10,8 +14,11 @@ typedef int ElementType;
 #define _Tree_H
 #endif  
 
+
 typedef struct TreeNode *Position;
+//指向结构体的指针 searchTree
 typedef struct TreeNode *SearchTree;
+//实际结构体
 struct TreeNode
 {
     ElementType Element;
@@ -24,6 +31,7 @@ Position FindMin( SearchTree T );
 Position FindMax( SearchTree T );
 SearchTree Insert( ElementType X, SearchTree T );
 SearchTree Delete( ElementType X, SearchTree T );
+//
 ElementType Retrieve( Position P );
 
 
@@ -82,31 +90,42 @@ Position FindMax( SearchTree T )
         }
 
 
+/*
+elementType x 整形 数字 1
+searchTree T  指向treeNode的指针
+当指针T为空是 初始化对应结构,  左右子树，指针为空 ,当前节点
 
-SearchTree Insert( ElementType X, SearchTree T )
-        {
-     if( T == NULL )
-            {
-                /* Create and return a one-node tree */
-/* 2*/          T = malloc( sizeof( struct TreeNode ) );
-/* 3*/          if( T == NULL )
-/* 4*/              FatalError( "Out of space!!!" );
-                else
-                {
-/* 5*/              T->Element = X;
-/* 6*/              T->Left = T->Right = NULL;
-                }
-            }
-            else
-/* 7*/      if( X < T->Element )
-/* 8*/          T->Left = Insert( X, T->Left );
-            else
-/* 9*/      if( X > T->Element )
-/*10*/          T->Right = Insert( X, T->Right );
+ 
+ 
+ 
+*/
+SearchTree Insert( ElementType X, SearchTree T ){
+    if( T == NULL )
+    {
+        /* Create and return a one-node tree */
+	  	T = malloc( sizeof( struct TreeNode ) );
+	  	if( T == NULL ){
+	      FatalError( "Out of space!!!" );
+	    }else{
+	     T->Element = X;
+	      T->Left = T->Right = NULL;
+	    }
+	/*
+	如果X小于当前 节点的值 ,left小
+	使用left指针，继续插入
+	 */    
+    }else if( X < T->Element ){
+         T->Left = Insert( X, T->Left );
+    }else{
+    	/*
+    	如果X大于当前节点的值，right大,始终向右插入
+    	 */
+     	if( X > T->Element )T->Right = Insert( X, T->Right );
+    }
             /* Else X is in the tree already; we'll do nothing */
 
-/*11*/      return T;  /* Do not forget this line!! */
-        }
+     return T;  /* Do not forget this line!! */
+}
 /* END */
 
 
