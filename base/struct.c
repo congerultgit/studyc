@@ -38,7 +38,7 @@ struct moreTimes initStruct2(struct moreTimes type2){
 typedef struct {
 
    char *name;
-   int  month;
+   char *month;
 
 }personInfo;
 
@@ -76,7 +76,7 @@ int main(int argc,char *argv[]){
 	    test.name = *argv;
 	 }
 	 if(i==2){
-	    test.month = (int)*argv;
+	    test.month = *argv;
 	 }
 
          printf("%s is input \n",*argv);
