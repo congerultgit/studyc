@@ -18,7 +18,7 @@ typedef int ElementType;
 typedef struct TreeNode *Position;
 //指向结构体的指针 searchTree
 typedef struct TreeNode *SearchTree;
-//实际结构体
+//实际结构体 树形结构体
 struct TreeNode
 {
     ElementType Element;
